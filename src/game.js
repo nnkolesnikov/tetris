@@ -129,6 +129,7 @@ export default class Game{
         if(!this.isValidPositionFigure()){
             this.figure.y -= 1;
             this.lockFigure();
+            this.updateScore();
             this.generateFigure();
         }
         
@@ -148,7 +149,7 @@ export default class Game{
         return;
     }
     
-    rotateFigure(){
+    rotateFigure() {
         this.figure.rotation = (this.figure.rotation + 1) % 4;
 
         if(!this.isValidPositionFigure()){
@@ -157,18 +158,42 @@ export default class Game{
 
         return;
     }
-
-    clearPlayField() {
-        const borderY = this.field.length;
-
-        for(let y = 0; y < borderY; y++){
-            const borderX = this.field[y].length;
-
-            for(let x = 0; x < borderX; x++){
-                this.field[y][x] = 0;
-            }
-        } 
-        
-        return;
+    
+    updateScore() {
+        const lines = this.clearRows();
+        const score = lines * 100;
+        this.lines += lines;
+        this.score += score;
     }
+
+    clearRows() {
+        let deleteRowsIndex = [];
+        const field = this.field; 
+        const borderY = this.rows;
+        const borderX = this.columns;
+
+        for(let y = borderY - 1; y >= 0; y--){
+            let countBlocks = 0;
+            for(let x = 0; x < borderX; x++){
+                if(field[y][x] != 0)
+                    countBlocks += 1;
+            }
+
+            if(!countBlocks)
+                break;
+
+            if(countBlocks === borderX){
+                deleteRowsIndex.unshift(y);
+            }
+
+        }
+
+        for(let index of deleteRowsIndex){
+            this.field.splice(index, 1);
+            this.field.unshift(new Array(borderX).fill(0))
+        }
+
+        return deleteRowsIndex.length;
+    }
+
 }

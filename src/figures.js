@@ -16,10 +16,10 @@ export class I extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x, y + 1];
-        blocks[2] = [x, y + 2];
-        blocks[3] = [x, y + 3];
+        blocks[0] = [x, y - 1];
+        blocks[1] = [x, y];
+        blocks[2] = [x, y + 1];
+        blocks[3] = [x, y + 2];
         
         return blocks;
     }
@@ -30,10 +30,10 @@ export class I extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x + 1, y];
-        blocks[2] = [x + 2, y];
-        blocks[3] = [x + 3, y];
+        blocks[0] = [x - 1, y];
+        blocks[1] = [x, y];
+        blocks[2] = [x + 1, y];
+        blocks[3] = [x + 2, y];
         
         return blocks;
     }
@@ -49,7 +49,7 @@ export class I extends Figure {
     }
         
 }
-
+    
 export class J extends Figure {
     
     getNormalBlocks() {
@@ -58,10 +58,10 @@ export class J extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x, y + 1];
-        blocks[2] = [x, y + 2];
-        blocks[3] = [x - 1, y + 2];
+        blocks[0] = [x, y - 1];
+        blocks[1] = [x, y];
+        blocks[2] = [x, y + 1];
+        blocks[3] = [x - 1, y + 1];
         
         return blocks;
     }
@@ -72,10 +72,10 @@ export class J extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x + 1, y];
-        blocks[2] = [x, y + 1];
-        blocks[3] = [x, y + 2];
+        blocks[0] = [x, y - 1];
+        blocks[1] = [x + 1, y - 1];
+        blocks[2] = [x, y];
+        blocks[3] = [x, y + 1];
         
         return blocks;
     }
@@ -86,10 +86,10 @@ export class J extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x + 1, y];
-        blocks[2] = [x + 2, y];
-        blocks[3] = [x + 2, y + 1];
+        blocks[0] = [x - 1, y];
+        blocks[1] = [x, y];
+        blocks[2] = [x + 1, y];
+        blocks[3] = [x + 1, y + 1];
         
         return blocks;
     }
@@ -100,10 +100,10 @@ export class J extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x, y + 1];
-        blocks[2] = [x + 1, y + 1];
-        blocks[3] = [x + 2, y + 1];
+        blocks[0] = [x - 1, y - 1];
+        blocks[1] = [x - 1, y];
+        blocks[2] = [x, y];
+        blocks[3] = [x + 1, y];
         
         return blocks;
     }
@@ -118,9 +118,9 @@ export class J extends Figure {
             case 1:
                 return this.getNormalBlocks();
             case 2: 
-                return this.getIvertBlocks();
-            case 3:
                 return this.getFlipingLeftBlocks();
+            case 3:
+                return this.getIvertBlocks();
         }
         
         return this.getFlipingRightBlocks();
@@ -136,10 +136,10 @@ export class L extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x, y + 1];
-        blocks[2] = [x, y + 2];
-        blocks[3] = [x + 1, y + 2];
+        blocks[0] = [x, y - 1];
+        blocks[1] = [x, y];
+        blocks[2] = [x, y + 1];
+        blocks[3] = [x + 1, y + 1];
         
         return blocks;
     }
@@ -150,10 +150,10 @@ export class L extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x + 1, y];
-        blocks[2] = [x + 1, y + 1];
-        blocks[3] = [x + 1, y + 2];
+        blocks[0] = [x - 1, y - 1];
+        blocks[1] = [x, y - 1];
+        blocks[2] = [x, y];
+        blocks[3] = [x, y + 1];
         
         return blocks;
     }
@@ -164,10 +164,10 @@ export class L extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x, y + 1];
-        blocks[2] = [x - 1, y + 1];
-        blocks[3] = [x - 2, y + 1];
+        blocks[0] = [x - 1, y];
+        blocks[1] = [x, y];
+        blocks[2] = [x + 1, y];
+        blocks[3] = [x + 1, y - 1];
         
         return blocks;
     }
@@ -178,10 +178,10 @@ export class L extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x, y + 1];
-        blocks[2] = [x + 1, y];
-        blocks[3] = [x + 2, y];
+        blocks[0] = [x - 1, y];
+        blocks[1] = [x - 1, y + 1];
+        blocks[2] = [x, y];
+        blocks[3] = [x + 1, y];
         
         return blocks;
     }
@@ -196,9 +196,9 @@ export class L extends Figure {
             case 1:
                 return this.getNormalBlocks();
             case 2: 
-                return this.getIvertBlocks();
-            case 3:
                 return this.getFlipingLeftBlocks();
+            case 3:
+                return this.getIvertBlocks();
         }
         
         return this.getFlipingRightBlocks();
@@ -233,10 +233,10 @@ export class S extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x + 1, y];
-        blocks[2] = [x, y + 1];
-        blocks[3] = [x - 1, y + 1];
+        blocks[0] = [x - 1, y];
+        blocks[1] = [x, y];
+        blocks[2] = [x, y - 1];
+        blocks[3] = [x + 1, y - 1];
         
         return blocks;
     }
@@ -247,10 +247,10 @@ export class S extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x, y + 1];
-        blocks[2] = [x + 1, y + 1];
-        blocks[3] = [x + 1, y + 2];
+        blocks[0] = [x, y - 1];
+        blocks[1] = [x, y];
+        blocks[2] = [x + 1, y];
+        blocks[3] = [x + 1, y + 1];
         
         return blocks;
     }
@@ -275,10 +275,10 @@ export class T extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x + 1, y];
-        blocks[2] = [x + 2, y];
-        blocks[3] = [x + 1, y + 1];
+        blocks[0] = [x, y - 1];
+        blocks[1] = [x, y];
+        blocks[2] = [x - 1, y];
+        blocks[3] = [x + 1, y];
         
         return blocks;
     }
@@ -289,24 +289,10 @@ export class T extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x - 1, y + 1];
-        blocks[2] = [x, y + 1];
-        blocks[3] = [x + 1, y + 1];
-        
-        return blocks;
-    }
-
-    getFlipingLeftBlocks() {
-        const x = this.x;
-        const y = this.y;
-        
-        let blocks = [];
-
-        blocks[0] = [x, y];
-        blocks[1] = [x, y + 1];
-        blocks[2] = [x, y + 2];
-        blocks[3] = [x - 1, y + 1];
+        blocks[0] = [x - 1, y];
+        blocks[1] = [x, y];
+        blocks[2] = [x + 1, y];
+        blocks[3] = [x, y + 1];
         
         return blocks;
     }
@@ -317,10 +303,24 @@ export class T extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x, y + 1];
-        blocks[2] = [x, y + 2];
-        blocks[3] = [x + 1, y + 1];
+        blocks[0] = [x, y - 1];
+        blocks[1] = [x, y];
+        blocks[2] = [x, y + 1];
+        blocks[3] = [x + 1, y];
+        
+        return blocks;
+    }
+
+    getFlipingLeftBlocks() {
+        const x = this.x;
+        const y = this.y;
+        
+        let blocks = [];
+
+        blocks[0] = [x, y - 1];
+        blocks[1] = [x, y];
+        blocks[2] = [x, y + 1];
+        blocks[3] = [x - 1, y];
         
         return blocks;
     }
@@ -333,11 +333,11 @@ export class T extends Figure {
             case 0:
                 return this.getIvertBlocks();
             case 1:
-                return this.getFlipingLeftBlocks();
+                return this.getFlipingRightBlocks();
             case 2: 
                 return this.getNormalBlocks();
             case 3:
-                return this.getFlipingRightBlocks();
+                return this.getFlipingLeftBlocks();
         }
         
         return this.getInvertBlocks();
@@ -353,10 +353,10 @@ export class Z extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x + 1, y];
-        blocks[2] = [x + 1, y + 1];
-        blocks[3] = [x + 2, y + 1];
+        blocks[0] = [x - 1, y - 1];
+        blocks[1] = [x, y - 1];
+        blocks[2] = [x, y];
+        blocks[3] = [x + 1, y];
         
         return blocks;
     }
@@ -367,10 +367,10 @@ export class Z extends Figure {
         
         let blocks = [];
 
-        blocks[0] = [x, y];
-        blocks[1] = [x, y + 1];
-        blocks[2] = [x - 1, y + 1];
-        blocks[3] = [x - 1, y + 2];
+        blocks[0] = [x + 1, y - 1];
+        blocks[1] = [x + 1, y];
+        blocks[2] = [x, y];
+        blocks[3] = [x, y + 1];
         
         return blocks;
     }
