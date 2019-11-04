@@ -5,7 +5,6 @@ export default class Game{
     constructor(rows = 20, columns = 10) {
         this.score = 0;
         this.lines = 0;
-        this.level = 1;
         this.scores = [0, 40, 100, 300, 1200];
         this.isGameOver = false;
 
@@ -16,6 +15,15 @@ export default class Game{
         this.figure = this.createFigure();
         this.nextFigure = this.createFigure();
     
+    }
+
+    get level() {
+        let level = Math.floor(this.lines * 0.1) + 1;
+        
+        if(level > 8)
+            level = 8;
+
+        return level;
     }
 
     getState() { 

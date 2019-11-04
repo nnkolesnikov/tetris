@@ -43,6 +43,13 @@ export default class Controller {
         return;
     }
 
+    stop() {
+        this.stopTimer();
+        this.view.renderGameOverScreen(this.game.getState().score);    
+
+        return;
+    }
+
     pause() { 
         this.view.renderPauseScreen();
         this.isPlaying = false;
@@ -116,7 +123,11 @@ export default class Controller {
     }
 
     handlerKey(event) {
-        //TODO return of function (isGameOver)
+        if (this.game.isGameOver){
+            this.stop();
+            return;
+        }
+
         switch(event.keyCode) {
             case 13: // ENTER
                 if(!this.isPlaying)

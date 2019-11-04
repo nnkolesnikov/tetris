@@ -63,7 +63,7 @@ export default class View {
         return;
     }
 
-    renderGameOverScreen() {
+    renderGameOverScreen(score) {
         this.clearScreen();
 
         this.context.textAlign = 'center';
@@ -74,7 +74,7 @@ export default class View {
         this.context.textAlign = 'center';
         this.context.textBaseline = 'middle';
         this.context.font = '20px sans-serif';
-        this.context.fillText('Your score: ', this.width / 2, this.height / 2);
+        this.context.fillText('Your score: ' + score, this.width / 2, this.height / 2);
 
         return;
     }
