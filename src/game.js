@@ -2,16 +2,19 @@ import {I, J, L, O, S, T, Z} from './figures.js'
 
 export default class Game{
     
-    constructor(level = 1, rows = 20, columns = 10) {
+    constructor(rows = 20, columns = 10) {
         this.score = 0;
         this.lines = 0;
-        this.level = level;
-        
+        this.level = 1;
+        this.scores = [0, 40, 100, 300, 1200];
+        this.isGameOver = false;
+
         this.rows = rows;
         this.columns = columns;
 
         this.field = this.createPlayField();
         this.figure = this.createFigure();
+        this.nextFigure = this.createFigure();
     
     }
 
@@ -19,14 +22,20 @@ export default class Game{
         const field = this.copyPlayField();
         const blocks = this.figure.getBlocks();
 
-        for(let i = 0; i < blocks.length; i++){
-            const x = blocks[i][0];
-            const y = blocks[i][1];
-            
-            field[y][x] = 1;
+        for(const block of blocks){
+            const x = block[0];
+            const y = block[1];
+
+             field[y][x] = 1;
         }
 
-        return field;
+        return {
+            score: this.score,
+            lines: this.lines,
+            level: this.level,
+            nextFigure: this.nextFigure,
+            field
+        };
     }
     
     copyPlayField() {
@@ -60,8 +69,11 @@ export default class Game{
         return field;
     }
     
-    generateFigure() {
-        this.figure = this.createFigure();
+    updateFigure() {
+        this.figure = this.nextFigure;
+        this.nextFigure = this.createFigure();
+
+        return;
     }
 
     createFigure() {
@@ -72,32 +84,32 @@ export default class Game{
             case 'I':
                 return new I(Math.floor(this.columns/2) - 1, 0);
             case 'J':
-                return new J(Math.floor(this.columns/2) - 1, 0);
+                return new J(Math.floor(this.columns/2) - 1, 1);
             case 'L':
                 return new L(Math.floor(this.columns/2) - 1, 0);
             case 'O':
                 return new O(Math.floor(this.columns/2) - 1, 0);
             case 'S':
-                return new S(Math.floor(this.columns/2) - 1, 0);
+                return new S(Math.floor(this.columns/2) - 1, 1);
             case 'T':
                 return new T(Math.floor(this.columns/2) - 1, 0);
             case 'Z':
-                return new Z(Math.floor(this.columns/2) - 1, 0);
+                return new Z(Math.floor(this.columns/2) - 1, 1);
         }
 
         return new I(Math.floor(this.columns/2) - 1, 0);
-
     }
 
     isValidPositionFigure(){
         const blocks = this.figure.getBlocks();
 
-        for(let i = 0; i < blocks.length; i++){
-            const x = blocks[i][0];
-            const y = blocks[i][1];
+        for(const block of blocks){
+            const x = block[0];
+            const y = block[1];
 
-            if(this.field[y] === undefined || this.field[y][x] === undefined || this.field[y][x])
-                return false;
+             if(this.field[y] === undefined || this.field[y][x] === undefined || this.field[y][x])
+                 return false;
+
         }
 
         return true;
@@ -124,15 +136,23 @@ export default class Game{
     }
 
     moveFigureDown() {
+        if(this.isGameOver)
+            return;
+
         this.figure.y += 1    
         
-        if(!this.isValidPositionFigure()){
+        if(!this.isValidPositionFigure()) {
             this.figure.y -= 1;
             this.lockFigure();
             this.updateScore();
-            this.generateFigure();
+            this.updateFigure();
+            
         }
         
+        if(!this.isValidPositionFigure()) {
+           this.isGameOver = true; 
+        }
+
         return;
     }
 
@@ -161,9 +181,12 @@ export default class Game{
     
     updateScore() {
         const lines = this.clearRows();
-        const score = lines * 100;
+        const score = this.scores[lines] === undefined ? this.scores[this.scores.length - 1] : this.scores[lines] 
+        
         this.lines += lines;
         this.score += score;
+
+        return;
     }
 
     clearRows() {

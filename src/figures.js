@@ -4,6 +4,8 @@ class Figure {
         this.x = x;
         this.y = y;
         this.rotation = 0;
+
+        return;
     }
     
 }
@@ -46,6 +48,20 @@ export class I extends Figure {
         }    
 
         return this.getInvertBlocks();
+    }
+
+    getViewBlocks() {
+        const x = 1; 
+        const y = 1;
+               
+        let blocks = [];
+
+        blocks[0] = [x - 1, y];
+        blocks[1] = [x, y];
+        blocks[2] = [x + 1, y];
+        blocks[3] = [x + 2, y];
+        
+        return blocks;
     }
         
 }
@@ -125,7 +141,20 @@ export class J extends Figure {
         
         return this.getFlipingRightBlocks();
     }
+    
+    getViewBlocks() {
+        const x = 1 
+        const y = 1 
         
+        let blocks = [];
+
+        blocks[0] = [x - 1, y - 1];
+        blocks[1] = [x - 1, y];
+        blocks[2] = [x, y];
+        blocks[3] = [x + 1, y];
+        
+        return blocks;
+    }       
 }
 
 export class L extends Figure {
@@ -203,7 +232,20 @@ export class L extends Figure {
         
         return this.getFlipingRightBlocks();
     }
+    
+    getViewBlocks() {
+        const x = 1; 
+        const y = 1;
         
+        let blocks = [];
+
+        blocks[0] = [x - 1, y];
+        blocks[1] = [x - 1, y + 1];
+        blocks[2] = [x, y];
+        blocks[3] = [x + 1, y];
+        
+        return blocks;
+    }       
 }
 
 export class O extends Figure {
@@ -220,7 +262,20 @@ export class O extends Figure {
         blocks[3] = [x + 1, y + 1];
         
         return blocks;
-      
+    }
+
+    getViewBlocks() {
+        const x = 1; 
+        const y = 1;
+        
+        let blocks = [];
+
+        blocks[0] = [x, y];
+        blocks[1] = [x, y + 1];
+        blocks[2] = [x + 1, y];
+        blocks[3] = [x + 1, y + 1];
+        
+        return blocks;
     }
         
 }
@@ -258,13 +313,26 @@ export class S extends Figure {
     getBlocks() {
         const rotation = this.rotation;
 
-        if(rotation % 2){
+        if((rotation + 1) % 2){
             return this.getNormalBlocks();
         }    
 
         return this.getInvertBlocks();
     }
+    
+    getViewBlocks() {
+        const x = 1; 
+        const y = 1;
         
+        let blocks = [];
+
+        blocks[0] = [x - 1, y];
+        blocks[1] = [x, y];
+        blocks[2] = [x, y - 1];
+        blocks[3] = [x + 1, y - 1];
+        
+        return blocks;
+    }       
 }
 
 export class T extends Figure {
@@ -342,7 +410,20 @@ export class T extends Figure {
         
         return this.getInvertBlocks();
     }
+    
+    getViewBlocks() {
+        const x = 1; 
+        const y = 1;
         
+        let blocks = [];
+
+        blocks[0] = [x, y - 1];
+        blocks[1] = [x, y];
+        blocks[2] = [x - 1, y];
+        blocks[3] = [x + 1, y];
+        
+        return blocks;
+    }   
 }
 
 export class Z extends Figure {
@@ -378,12 +459,26 @@ export class Z extends Figure {
     getBlocks() {
         const rotation = this.rotation;
 
-        if(rotation % 2){
+        if((rotation + 1) % 2){
             return this.getNormalBlocks();
         }    
 
         return this.getInvertBlocks();
     }
+
+    getViewBlocks() {
+        const x = 1;
+        const y = 1;
         
+        let blocks = [];
+
+        blocks[0] = [x - 1, y - 1];
+        blocks[1] = [x, y - 1];
+        blocks[2] = [x, y];
+        blocks[3] = [x + 1, y];
+        
+        return blocks;
+    }
+       
 }
 
