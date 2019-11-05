@@ -50,7 +50,7 @@ export default class View {
     renderStartScreen() {
         this.context.textAlign = 'center';
         this.context.textBaseline = 'middle';
-        this.context.font = '20px sans-serif';
+        this.context.font = '20px "8-bit"';
         this.context.fillText('Press ENTER to start game', this.width / 2, this.height / 2);
 
         return;
@@ -68,13 +68,13 @@ export default class View {
 
         this.context.textAlign = 'center';
         this.context.textBaseline = 'middle';
-        this.context.font = '36px sans-serif';
+        this.context.font = '36px "8-bit"';
         this.context.fillText('GAME OVER', this.width / 2, this.height / 2 - 60);
         
         this.context.textAlign = 'center';
         this.context.textBaseline = 'middle';
-        this.context.font = '20px sans-serif';
-        this.context.fillText('Your score: ' + score, this.width / 2, this.height / 2);
+        this.context.font = '20px "8-bit"';
+        this.context.fillText('your score: ' + score, this.width / 2, this.height / 2);
 
         return;
     }
@@ -85,12 +85,11 @@ export default class View {
         this.context.fillStyle = 'black';
         this.context.textAlign = 'start';
         this.context.textBaseline = 'top';
-        this.context.font = '20px sans-serif';
-
-        this.context.fillText('Score: ' + score, this.panelX, this.fieldY);
-        this.context.fillText('Lines: ' + lines, this.panelX, this.fieldY + 30);
-        this.context.fillText('Level: ' + level, this.panelX, this.fieldY + 60);
-        this.context.fillText('Next: ', this.panelX, this.fieldY + 90);
+        this.context.font = '12px "8-bit"';
+        this.context.fillText('score: ' + score, this.panelX, this.fieldY);
+        this.context.fillText('lines: ' + lines, this.panelX, this.fieldY + 30);
+        this.context.fillText('level: ' + level, this.panelX, this.fieldY + 60);
+        this.context.fillText('next: ', this.panelX, this.fieldY + 90);
         
         const blocks = nextFigure.getViewBlocks();
         
