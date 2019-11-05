@@ -8,6 +8,7 @@
 #main p {
     text-align: center; 
     font-family: "8-bit";
+    font-size: 20px;
 }
 
 #main canvas {
