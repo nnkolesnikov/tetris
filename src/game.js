@@ -186,7 +186,9 @@ export default class Game{
 
         return;
     }
-    
+
+    //TODO fail figure 
+
     updateScore() {
         const lines = this.clearRows();
         const score = this.scores[lines] === undefined ? this.scores[this.scores.length - 1] : this.scores[lines] 
