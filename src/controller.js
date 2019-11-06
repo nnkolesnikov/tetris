@@ -12,6 +12,11 @@ export default class Controller {
     }
 
     update() {
+        if(this.game.isGameOver) {
+            this.stop();
+            return;
+        }
+
         this.game.moveFigureDown();
         this.view.render(this.game.getState());
          
@@ -19,7 +24,7 @@ export default class Controller {
     }
 
     startTimer() {
-        const speed = 1100 - this.game.level * 100
+        const speed = 1400 - this.game.level * 200
 
         if(!this.intervalId) {
             this.intervalId = setInterval(() => this.update(), speed);
@@ -72,9 +77,8 @@ export default class Controller {
             this.view.render(this.game.getState());
         }
 
-        if(this.game.isGameOver){
-            this.stopTimer();
-            this.view.renderGameOverScreen();
+        if(this.game.isGameOver) {
+            this.stop();
         }
 
         return;
@@ -86,9 +90,8 @@ export default class Controller {
             this.view.render(this.game.getState());
         }
         
-        if(this.game.isGameOver){
-            this.stopTimer();
-            this.view.renderGameOverScreen();
+        if(this.game.isGameOver) {
+            this.stop();
         }
 
         return;
@@ -100,9 +103,8 @@ export default class Controller {
             this.view.render(this.game.getState());
         }
         
-        if(this.game.isGameOver){
-            this.stopTimer();
-            this.view.renderGameOverScreen();
+        if(this.game.isGameOver) {
+            this.stop();
         }
 
         return;
@@ -114,19 +116,16 @@ export default class Controller {
             this.view.render(this.game.getState());
         }
 
-        if(this.game.isGameOver){
-            this.stopTimer();
-            this.view.renderGameOverScreen();
+        if(this.game.isGameOver) {
+            this.stop();
         }
 
         return;
     }
-
+    
     handlerKey(event) {
-        if (this.game.isGameOver){
-            this.stop();
+        if(this.game.isGameOver)
             return;
-        }
 
         switch(event.keyCode) {
             case 13: // ENTER
