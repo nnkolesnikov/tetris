@@ -20,8 +20,8 @@ export default class Game{
     get level() {
         let level = Math.floor(this.lines * 0.1) + 1;
         
-        if(level > 8)
-            level = 8;
+        if(level > 6)
+            level = 6;
 
         return level;
     }
