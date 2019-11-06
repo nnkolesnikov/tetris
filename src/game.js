@@ -187,7 +187,9 @@ export default class Game{
         return;
     }
 
-    //TODO fail figure 
+    failFigureDown() {
+        //TODO    
+    }
 
     updateScore() {
         const lines = this.clearRows();
