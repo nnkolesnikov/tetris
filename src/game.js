@@ -147,7 +147,7 @@ export default class Game{
         if(this.isGameOver)
             return;
 
-        this.figure.y += 1    
+        this.figure.y += 1;    
         
         if(!this.isValidPositionFigure()) {
             this.figure.y -= 1;
@@ -188,7 +188,23 @@ export default class Game{
     }
 
     failFigureDown() {
-        //TODO    
+        if(this.isGameOver)
+            return;
+
+        if(!this.isValidPositionFigure()) {
+           this.isGameOver = true; 
+        }
+        
+        do { 
+            this.figure.y += 1;
+        } while(this.isValidPositionFigure())
+        
+        this.figure.y -= 1;
+        this.lockFigure();
+        this.updateScore();
+        this.updateFigure();
+
+        return; 
     }
 
     updateScore() {

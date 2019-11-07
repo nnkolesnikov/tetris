@@ -122,17 +122,33 @@ export default class Controller {
 
         return;
     }
+
+    space() {
+        if(this.isPlaying) {
+            this.game.failFigureDown();
+            this.view.render(this.game.getState());
+        }
+
+        if(this.game.isGameOver) {
+            this.stop();
+        }
+
+        return;
+
+    }
     
     handlerKey(event) {
         if(this.game.isGameOver)
             return;
-
         switch(event.keyCode) {
             case 13: // ENTER
                 if(!this.isPlaying)
                     this.play();    
                 else
                     this.pause();    
+                break;
+            case 32: // SPACE
+                this.space();
                 break;
             case 37: // LEFT ARROW 
                 this.left();
